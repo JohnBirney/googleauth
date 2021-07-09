@@ -3,7 +3,7 @@ const speakeasy = require('speakeasy')
 const qrcode = require('qrcode')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 5000
 
 let secret = speakeasy.generateSecret()
 let temp2Fsecret = secret.base32
@@ -31,5 +31,5 @@ app.get('/verify', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
+    console.log(`Listening to port: ${port}...`)
 })
