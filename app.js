@@ -1,8 +1,8 @@
 const express = require('express')
 const speakeasy = require('speakeasy')
 const qrcode = require('qrcode')
-const app = express()
 
+const app = express()
 const port = 3000
 
 let secret = speakeasy.generateSecret()
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
         res.statusCode = 200
         res.writeHead(200, {'Content-Type':'text/html'})
         res.write('<html>')
-        res.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>');
+        res.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>')
         res.write('<script>function verify(){let userToken = document.querySelector("#userToken").value; $.ajax("/verify?userToken=" + userToken).done(function(data){alert( data );});}</script>')
         res.write('<img src="' + data_url + '">')
         res.write('<br><input type="text" id="userToken">')
@@ -31,5 +31,5 @@ app.get('/verify', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Listening at http://localhost:${port}`)
 })
